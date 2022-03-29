@@ -4,7 +4,6 @@ var express = require('express');
 var CardController = require("./controllers/Carta")
 
 var router = express.Router();
-
 //Paquete necesario para poder subir archivos por post
 var multipart = require("connect-multiparty");
 //Especificamos la rita de descarga
@@ -22,5 +21,7 @@ router.post("/+carta",CardController.saveCard)
 router.delete("/cartas/:id?",CardController.deleteCard) 
 //Pujar foto de la carta
 router.post("/upload-image/:id",multiparMiddleware,CardController.uploadImage)
+//Actualizar carta
+router.put("/modifica/:id?",CardController.updateCard)  
 
 module.exports = router;
