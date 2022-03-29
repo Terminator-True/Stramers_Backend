@@ -11,8 +11,8 @@ var CardSchema = schema({
     daño: Number,
     vida: Number,
     text: String,
-    function: String,
+    funcion: String,
     img:String
 });
 
-module.exports = mongoose.model('Cartas', CardSchema)
+module.exports = mongoose.model('cartas', CardSchema)

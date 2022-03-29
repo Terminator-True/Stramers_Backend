@@ -55,7 +55,7 @@ var controller = {
             .then(cardStored=>{
                 if(!cardStored) return res.status(404).send({message: "Document no desat"});
 
-                return res.status(200).send({project: cardStored});
+                return res.status(200).send({card: cardStored});
             })
             .catch(err => {
                 return res.status(500).send({message: "Error desant dades"});

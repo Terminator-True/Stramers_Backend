@@ -2,10 +2,10 @@
 
 var express = require("express");
 var bodyParser = require("body-parser");
+const sessions = require('express-session');
+var _routes = require("./src/routes")
 
 var app = express();
-
-var _routes = require("./src/routes")
 
 app.use(bodyParser.urlencoded({extended:false}));
 
@@ -13,6 +13,13 @@ app.use(bodyParser.json());
 
 //Rutes
 app.use("/api",_routes)
+//Sessió
+app.use(sessions({
+    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    saveUninitialized:true,
+    resave: false
+}));
+
 //CORS
 app.use((req, res, next) => {
     //Fa que els recursos de la resposta puguin ser compartits per tots (*) 
