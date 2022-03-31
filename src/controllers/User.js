@@ -3,43 +3,42 @@
 const Usuario = require("../models/User");
 var session={};
 
-//Checking the crypto module
+//Crypto
 const crypto = require('crypto');
-const algorithm = 'aes-256-cbc'; //Using AES encryption
-const key = "Secret123";
-const iv = "sec";
 
-//Encrypting text
+const algorithm = 'aes-256-ctr';
+const secretKey = 'vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3';
+const iv = crypto.randomBytes(16);
+
 function encrypt(text) {
-   let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);
-   let encrypted = cipher.update(text);
-   encrypted = Buffer.concat([encrypted, cipher.final()]);
-   return { iv: iv.toString('hex'), encryptedData: encrypted.toString('hex') };
-}
+    const cipher = crypto.createCipheriv(algorithm, secretKey, iv);
 
-// Decrypting text
-function decrypt(text) {
-   let iv = Buffer.from(text.iv, 'hex');
-   let encryptedText = Buffer.from(text.encryptedData, 'hex');
-   let decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(key), iv);
-   let decrypted = decipher.update(encryptedText);
-   decrypted = Buffer.concat([decrypted, decipher.final()]);
-   return decrypted.toString();
-}
+    const encrypted = Buffer.concat([cipher.update(text), cipher.final()]);
 
+    return {
+        iv: iv.toString('hex'),
+        content: encrypted.toString('hex')
+    };
+}
+function decrypt(hash) {
+
+    const decipher = crypto.createDecipheriv(algorithm, secretKey, Buffer.from(hash.iv, 'hex'));
+
+    const decrpyted = Buffer.concat([decipher.update(Buffer.from(hash.content, 'hex')), decipher.final()]);
+    return decrpyted.toString();
+};
 
 var controller = {
     login: function(req, res){
         let username = req.body.email;
         let password = req.body.pasw;
-        Usuario.findOne({ email: username },'password')
-            .then(pswd => {
-                console.log(decrypt(pswd.password.toString(),"secret123"))
-                if(decrypt(pswd.password,"secret123")!=password){
+        Usuario.findOne({ email: username }, "email,user")
+            .then(user => {
+                if(decrypt(user.password) !=password){
                     return res.status(404).send({message:"Error, password incorrecte"});
                 } else{
                     session.loggedin = true;
-                    session.username = username;
+                    session.user = user;
                     return res.status(200).send({session});
                 }
             })
@@ -53,9 +52,8 @@ var controller = {
 
         user.nick = params.nick
         user.email = params.email
-        user.password = encrypt(params.password,"secret123")    
-        user.cartas = {}
-        user.mazos = {}
+        user.password = encrypt(params.pasw)  
+
         user.moneda = 0
         user.save()
             .then(userStored=>{
