@@ -26,6 +26,9 @@ router.post("/upload-image/:id",multiparMiddleware,CardController.uploadImage)
 router.put("/modifica/:id?",CardController.updateCard)  
 //-------------------
 //Rutas Users
+//-------------------
+
+//Login
 router.post("/login",UserController.login)
 //Register
 router.post("/register",UserController.register)
