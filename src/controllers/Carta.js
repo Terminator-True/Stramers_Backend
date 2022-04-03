@@ -46,12 +46,12 @@ var controller = {
         card.category = params.category
         card.type = params.type    
         card.coste = params.coste
-        card.daño = params.daño
+        card.dmg = params.dmg
         card.vida = params.vida
         card.text=params.text
         card.funcion=params.funcion
         card.image = 'null'
-        card.save(cardStored)
+        card.save()
             .then(cardStored=>{
                 if(!cardStored) return res.status(404).send({message: "Document no desat"});
 
