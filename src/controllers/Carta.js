@@ -1,7 +1,8 @@
 'use strict'
 
 const Carta = require("../models/Carta");
-
+const fs = require("fs");
+const path = require("path")
 var controller = {
     home: function( req, res){
         return res.status(200).send({
@@ -10,7 +11,7 @@ var controller = {
     },
     getCard: function(req, res){
         var Id = req.query.id;
-        console.log(Id)
+        //console.log(Id)
         if(Id==null) return res.status(500).send({message:"no has especificat carta"});
         else{
             Carta.findById(Id)
@@ -50,7 +51,8 @@ var controller = {
         card.vida = params.vida
         card.text=params.text
         card.funcion=params.funcion
-        card.image = 'null'
+        card.img = params.img
+        console.log(card)
         card.save()
             .then(cardStored=>{
                 if(!cardStored) return res.status(404).send({message: "Document no desat"});
@@ -78,15 +80,16 @@ var controller = {
     uploadImage: function(req, res){
         var Id = req.params.id;
         var fileName = "imatge no pujada"
+        console.log(req.files)
         if(req.files){
-            var filePath = req.files.image.path
-            var filesplit=filePath.split("/")
-            var fileName=filesplit[1]
-            Project.findByIdAndUpdate(Id, {image:fileName}, {new:true})
+            var filePath = req.files.img.path
+            var filesplit=filePath.split("\\")
+            var fileName=filesplit[2]
+            Carta.findByIdAndUpdate(Id, {img:fileName}, {new:true})
                 .then(cardUpdated=> {
                     if(!cardUpdated) return res.status(404).send({message:"La carta no existeix"});
 
-                    return res.status(200).send({project:cardUpdated});
+                    return res.status(200).send({card:cardUpdated});
                 })   
                 .catch(err =>{
                     return res.status(500).send({message:"Error actualitzant la imatge"});
@@ -106,6 +109,18 @@ var controller = {
             .catch(err => {
                 return res.status(500).send({message:"Error actualitzant les dades"});
             })
+    },
+    getImage: function(req,res){
+        var file = req.params.img
+        var path_file = "./src/uploads/"+file
+        console.log(path_file)
+        fs.exists(path_file, (exists)=>{
+            if (exists) {
+                return res.sendFile(path.resolve(path_file))
+            }else{
+                return res.status(200).send({message: "No existeix la imatge"})
+            }
+        })
     }
 };
 

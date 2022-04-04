@@ -32,9 +32,10 @@ var controller = {
     login: function(req, res){
         let username = req.body.email;
         let password = req.body.pasw;
-        Usuario.findOne({ email: username }, "email,user")
+        Usuario.findOne({ email: username })
             .then(user => {
-                if(decrypt(user.password) !=password){
+                console.log(user)
+                if(decrypt(user.password)!=password){
                     return res.status(404).send({message:"Error, password incorrecte"});
                 } else{
                     session.loggedin = true;

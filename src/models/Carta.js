@@ -8,11 +8,11 @@ var CardSchema = schema({
     category: String,
     type: String,
     coste: Number,
-    daño: Number,
+    dmg: Number,
     vida: Number,
     text: String,
     funcion: String,
     img:String
 });
 
-module.exports = mongoose.model('cartas', CardSchema)
+module.exports = mongoose.model('Carta', CardSchema)

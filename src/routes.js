@@ -16,8 +16,10 @@ router.get("/",CardController.home)
 router.get("/carta/:id?",CardController.getCard)  
 //Devuelve todas las cartas
 router.get("/cartas",CardController.getCards) 
+//Devuelve la imagen de una carta
+router.get("/get-image/:img",CardController.getImage)
 //Añade carta a la base de datos 
-router.post("/+carta",CardController.saveCard)  
+router.post("/save-carta",CardController.saveCard)  
 //Borra la carta pasada por parámetro
 router.delete("/cartas/:id?",CardController.deleteCard) 
 //Pujar foto de la carta
