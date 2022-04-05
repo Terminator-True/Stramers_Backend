@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="60"
+   height="60"
+   version="1.1"
+   viewBox="0 0 15.875 15.875"
+   id="svg19"
+   sodipodi:docname="select_ruleta.svg"
+   inkscape:export-filename="G:\XAMPP\htdocs\Ruleta Phaser\assets\imagen\select_ruleta.png"
+   inkscape:export-xdpi="47.8923"
+   inkscape:export-ydpi="47.8923"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview21"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="9.05"
+     inkscape:rotation="90"
+     inkscape:cx="29.944751"
+     inkscape:cy="30.110497"
+     inkscape:window-width="1360"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg19" />
+  <defs
+     id="defs5">
+    <filter
+       id="filter1118"
+       x="-0.069968198"
+       y="-0.069968699"
+       width="1.1399364"
+       height="1.139937"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         stdDeviation="0.33185703"
+         id="feGaussianBlur2" />
+    </filter>
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     transform="matrix(.99192 0 0 1.0002 .64472 .19863)"
+     d="m0.4627 1.1834-6.9e-6 8.1596 6.9829 5.8061 6.9829-5.8061v-8.1596z"
+     fill-opacity=".41444"
+     filter="url(#filter1118)"
+     stroke="#000"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     stroke-width=".36141"
+     style="paint-order:fill markers stroke"
+     id="path9" />
+  <path
+     d="m0.95456 0.29319-6.92e-6 8.1596 6.9829 5.8061 6.9829-5.8061v-8.1596z"
+     fill="#ff8200"
+     stroke="#000"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     stroke-width=".36141"
+     style="paint-order:fill markers stroke"
+     id="path11" />
+  <path
+     d="m1.1314 8.393 13.611-0.017873-6.8045 5.6502z"
+     fill="#ad683b"
+     fill-opacity=".72034"
+     id="path13" />
+  <path
+     d="m1.3015 0.67339 0.018504 7.5586 6.6382 5.4972-5.6507-5.7741z"
+     fill="#fff"
+     id="path15" />
+  <path
+     d="m14.615 0.67339-0.0185 7.5586-6.6382 5.4972 5.6507-5.7741z"
+     fill="#fff"
+     id="path17" />
+</svg>
