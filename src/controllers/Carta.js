@@ -50,7 +50,7 @@ var controller = {
         card.dmg = params.dmg
         card.vida = params.vida
         card.text=params.text
-        card.funcion=params.funcion
+        card.obtenible=params.obtenible
         card.img = params.img
         console.log(card)
         card.save()

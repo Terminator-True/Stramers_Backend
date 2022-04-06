@@ -11,7 +11,7 @@ var CardSchema = schema({
     dmg: Number,
     vida: Number,
     text: String,
-    funcion: String,
+    obtenible: Boolean,
     img:String
 });
 
