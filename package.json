@@ -1,7 +1,7 @@
 {
   "name": "projecte",
   "version": "1.0.0",
-  "description": "Projecte Angular m6-uf3",
+  "description": "Projecte Final",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -18,7 +18,9 @@
     "crypto-js": "^4.1.1",
     "express": "^4.17.3",
     "express-session": "^1.17.2",
-    "mongoose": "^6.2.9"
+    "http": "^0.0.1-security",
+    "mongoose": "^6.2.9",
+    "socket.io": "^4.4.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
