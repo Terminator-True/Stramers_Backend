@@ -35,12 +35,15 @@ router.put("/modifica/:id?",CardController.updateCard)
 router.post("/login",UserController.login)
 //Register
 router.post("/register",UserController.register)
-
+//Get money
+router.get("/get-money/:nick",UserController.getMoney)
+//Update money
+router.put("/new-money/:nick",UserController.updateMoney)
 //-------------------
 //Rutas Ruleta
 //-------------------
 router.get("/get-image-roulete/:img",RuletaController.getImage)
 
-router.get("get-card-type/:type",CardController.getCardsByType)
+router.get("/get-card-type/:type",CardController.getCardsByType)
 
 module.exports = router;

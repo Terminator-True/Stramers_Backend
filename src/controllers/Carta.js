@@ -123,8 +123,8 @@ var controller = {
         })
     },
     getCardsByType: function(req, res){
-        var type = req.query.type;
-        //console.log(Id)
+        var type = req.params.type;
+        console.log(type)
         if(type==null) return res.status(500).send({message:"no has especificat carta"});
         else{
             Carta.find({type: type})
@@ -139,7 +139,6 @@ var controller = {
                         return res.status(500).send({message:"Error al retornar les dades"});
                 });
         }
-
     }
 };
 

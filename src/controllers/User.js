@@ -66,7 +66,37 @@ var controller = {
                 return res.status(500).send({message: "Error desant dades"});
             })
 
+    },
+    getMoney: function(req, res){
+        var nick = req.params.nick;
+        console.log(nick)
+        if(nick==null) return res.status(500).send({message:"no has especificat usuari"});
+        else{
+            user.find({nick: nick })
+                .then(card => { 
+                        console.log(card)                   
+                        if(!card) return res.status(404).send({message:"Usuari no existent"});
+
+                        return res.status(200).send({card});
+
+                })
+                .catch( err => {
+                        return res.status(500).send({message:"Error al retornar les dades"});
+                });
+        }
+
+    },
+    updateMoney: function(req, res){
+        var nick = req.params.nick;
+        var update = req.body;
+        user.findByOneAndUpdate({ nick: nick }, update)
+            .then(cardtUpdated => {
+                if(!projectUpdated) return res.status(404).send({message:"La carta no existeix"});
+                return res.status(200).send({project:cardtUpdated});
+            })
+            .catch(err => {
+                return res.status(500).send({message:"Error actualitzant les dades"});
+            })
     }
- 
 }
 module.exports = controller;
