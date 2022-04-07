@@ -121,6 +121,25 @@ var controller = {
                 return res.status(200).send({message: "No existeix la imatge"})
             }
         })
+    },
+    getCardsByType: function(req, res){
+        var type = req.query.type;
+        //console.log(Id)
+        if(type==null) return res.status(500).send({message:"no has especificat carta"});
+        else{
+            Carta.find({type: type})
+                .then(cards => { 
+                        console.log(cards)                   
+                        if(!cards) return res.status(404).send({message:"Carta no existent"});
+
+                        return res.status(200).send({cards});
+
+                })
+                .catch( err => {
+                        return res.status(500).send({message:"Error al retornar les dades"});
+                });
+        }
+
     }
 };
 

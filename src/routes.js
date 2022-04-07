@@ -41,4 +41,6 @@ router.post("/register",UserController.register)
 //-------------------
 router.get("/get-image-roulete/:img",RuletaController.getImage)
 
+router.get("get-card-type/:type",CardController.getCardsByType)
+
 module.exports = router;
