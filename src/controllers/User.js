@@ -69,15 +69,14 @@ var controller = {
     },
     getMoney: function(req, res){
         var nick = req.params.nick;
-        console.log(nick)
         if(nick==null) return res.status(500).send({message:"no has especificat usuari"});
         else{
-            user.find({nick: nick })
-                .then(card => { 
-                        console.log(card)                   
-                        if(!card) return res.status(404).send({message:"Usuari no existent"});
+            Usuario.find({nick: nick })
+                .then(user => { 
+                        let moneda = user[0].moneda
+                        if(!user) return res.status(404).send({message:"Usuari no existent"});
 
-                        return res.status(200).send({card});
+                        return res.status(200).send({moneda});
 
                 })
                 .catch( err => {
@@ -89,10 +88,11 @@ var controller = {
     updateMoney: function(req, res){
         var nick = req.params.nick;
         var update = req.body;
-        user.findByOneAndUpdate({ nick: nick }, update)
-            .then(cardtUpdated => {
-                if(!projectUpdated) return res.status(404).send({message:"La carta no existeix"});
-                return res.status(200).send({project:cardtUpdated});
+        console.log(update)
+        Usuario.findOneAndUpdate({ nick: nick }, update)
+            .then(moneyUpdated => {
+                if(!moneyUpdated) return res.status(404).send({message:"L'usuari no existeix"});
+                return res.status(200).send({moneda:moneyUpdated});
             })
             .catch(err => {
                 return res.status(500).send({message:"Error actualitzant les dades"});

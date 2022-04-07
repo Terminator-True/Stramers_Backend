@@ -36,9 +36,9 @@ router.post("/login",UserController.login)
 //Register
 router.post("/register",UserController.register)
 //Get money
-router.get("/get-money/:nick",UserController.getMoney)
+router.get("/get-money/:nick?",UserController.getMoney)
 //Update money
-router.put("/new-money/:nick",UserController.updateMoney)
+router.put("/new-money/:nick?",UserController.updateMoney)
 //-------------------
 //Rutas Ruleta
 //-------------------
