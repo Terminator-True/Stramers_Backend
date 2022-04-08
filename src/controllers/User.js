@@ -75,7 +75,7 @@ var controller = {
                 .then(user => { 
                         let moneda = user[0].moneda
                         if(!user) return res.status(404).send({message:"Usuari no existent"});
-
+                        //console.log(moneda)
                         return res.status(200).send({moneda});
 
                 })
@@ -89,7 +89,7 @@ var controller = {
         var nick = req.params.nick;
         var update = req.body;
         console.log(update)
-        Usuario.findOneAndUpdate({ nick: nick }, update)
+        Usuario.findOneAndUpdate({ nick: nick }, update,{new:true})
             .then(moneyUpdated => {
                 if(!moneyUpdated) return res.status(404).send({message:"L'usuari no existeix"});
                 return res.status(200).send({moneda:moneyUpdated});

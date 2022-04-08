@@ -5,7 +5,6 @@ var controller = {
     getImage: function(req,res){
         var file = req.params.img
         var path_file = "./src/ruleta/"+file
-        console.log(path_file)
         fs.exists(path_file, (exists)=>{
             if (exists) {
                 return res.sendFile(path.resolve(path_file))
@@ -15,5 +14,4 @@ var controller = {
         })
     }
 };
-
 module.exports = controller;
