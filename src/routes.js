@@ -45,5 +45,7 @@ router.put("/new-money/:nick?",UserController.updateMoney)
 router.get("/get-image-roulete/:img",RuletaController.getImage)
 
 router.get("/get-card-type/:type",CardController.getCardsByType)
+router.get("/get-card-category/:category",CardController.getCardsByCateg)
+
 
 module.exports = router;

@@ -139,6 +139,24 @@ var controller = {
                         return res.status(500).send({message:"Error al retornar les dades"});
                 });
         }
+    },
+    getCardsByCateg: function(req, res){
+        var category = req.params.category;
+        console.log(category)
+        if(category==null) return res.status(500).send({message:"no has especificat carta"});
+        else{
+            Carta.find({category: category})
+                .then(cards => { 
+                        console.log(cards)                   
+                        if(!cards) return res.status(404).send({message:"Carta no existent"});
+
+                        return res.status(200).send({cards});
+
+                })
+                .catch( err => {
+                        return res.status(500).send({message:"Error al retornar les dades"});
+                });
+        }
     }
 };
 
