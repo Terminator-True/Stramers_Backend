@@ -54,8 +54,9 @@ var controller = {
         user.nick = params.nick
         user.email = params.email
         user.password = encrypt(params.pasw)  
-
         user.moneda = 0
+        user.cartas = []
+        user.mazos = []
         user.save()
             .then(userStored=>{
                 if(!userStored) return res.status(404).send({message: "Document no desat"});
