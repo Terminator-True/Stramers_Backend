@@ -98,6 +98,24 @@ var controller = {
             .catch(err => {
                 return res.status(500).send({message:"Error actualitzant les dades"});
             })
-    }
+    },
+    getCards: function(req, res){
+        var nick = req.params.nick;
+        if(nick==null) return res.status(500).send({message:"no has especificat usuari"});
+        else{
+            Usuario.find({nick: nick })
+                .then(user => { 
+                        let cartes = user[0].cartas
+                        if(!user) return res.status(404).send({message:"Usuari no existent"});
+                        //console.log(moneda)
+                        return res.status(200).send({cartes});
+
+                })
+                .catch( err => {
+                        return res.status(500).send({message:"Error al retornar les dades"});
+                });
+        }
+
+    },
 }
 module.exports = controller;
