@@ -41,6 +41,9 @@ router.get("/get-money/:nick?",UserController.getMoney)
 router.put("/new-money/:nick?",UserController.updateMoney)
 //Get cartes desbloquejades
 router.get("/get-cards/:nick?",UserController.getCards)
+//Subir deck
+router.put("/updeck",UserController.upDeck)
+
 
 //-------------------
 //Rutas Ruleta
