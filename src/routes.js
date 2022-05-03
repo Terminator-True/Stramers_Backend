@@ -42,7 +42,7 @@ router.put("/new-money/:nick?",UserController.updateMoney)
 //Get cartes desbloquejades
 router.get("/get-cards/:nick?",UserController.getCards)
 //Subir deck
-router.put("/updeck",UserController.upDeck)
+// router.put("/updeck",UserController.upDeck)
 
 
 //-------------------
