@@ -35,11 +35,10 @@ var controller = {
         let password = req.body.pasw;
         Usuario.findOne({ email: username })
             .then(user => {
-                console.log(user)
+                //console.log(user)
                 if(decrypt(user.password)!=password){
                     return res.status(404).send({message:"Error, password incorrecte"});
                 } else{
-                    session.loggedin = true;
                     session.user = user;
                     return res.status(200).send({session});
                 }
