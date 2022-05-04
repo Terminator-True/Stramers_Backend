@@ -120,7 +120,7 @@ var controller = {
      updateDeck: function(req, res){
         var nick = req.params.nick;
         var update = req.body;
-        //console.log(update)
+        console.log(update)
         Usuario.findOneAndUpdate({ nick: nick }, update,{new:true})
             .then(DeckUpdate => {
                 if(!DeckUpdate) return res.status(404).send({message:"L'usuari no existeix"});
