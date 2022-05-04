@@ -30,7 +30,6 @@ router.put("/modifica/:id?",CardController.updateCard)
 //-------------------
 //Rutas Users
 //-------------------
-
 //Login
 router.post("/login",UserController.login)
 //Register
@@ -41,6 +40,12 @@ router.get("/get-money/:nick?",UserController.getMoney)
 router.put("/new-money/:nick?",UserController.updateMoney)
 //Get cartes desbloquejades
 router.get("/get-cards/:nick?",UserController.getCards)
+//Update per al mall
+router.put("/updeck/:nick?",UserController.updateDeck)
+//Get per a tots els malls
+router.get("/get-decks/:nick?",UserController.getDecks)
+
+
 
 //-------------------
 //Rutas Ruleta

@@ -116,5 +116,36 @@ var controller = {
         }
 
     },
+     updateDeck: function(req, res){
+        var nick = req.params.nick;
+        var update = req.body;
+        //console.log(update)
+        Usuario.findOneAndUpdate({ nick: nick }, update,{new:true})
+            .then(DeckUpdate => {
+                if(!DeckUpdate) return res.status(404).send({message:"L'usuari no existeix"});
+                return res.status(200).send({Updated:DeckUpdate});
+            })
+            .catch(err => {
+                return res.status(500).send({message:"Error actualitzant les dades"});
+            })
+    },
+    getDecks: function(req, res){
+        var nick = req.params.nick;
+        if(nick==null) return res.status(500).send({message:"no has especificat usuari"});
+        else{
+            Usuario.find({nick: nick })
+                .then(user => { 
+                        let mazos = user[0].mazos
+                        if(!user) return res.status(404).send({message:"Usuari no existent"});
+                        //console.log(moneda)
+                        return res.status(200).send({mazos});
+
+                })
+                .catch( err => {
+                        return res.status(500).send({message:"Error al retornar les dades"});
+                });
+        }
+
+    },
 }
 module.exports = controller;
