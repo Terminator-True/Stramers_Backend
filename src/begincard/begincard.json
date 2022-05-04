@@ -1,0 +1,211 @@
+[{
+  "_id": {
+    "$oid": "624dcd2403b1519ed3faeef8"
+  },
+  "name": "FACTURAS",
+  "category": "Raro",
+  "type": "Hechizo",
+  "coste": 4,
+  "dmg": 0,
+  "vida": 0,
+  "text": "3 de daño en área",
+  "obtenible": true,
+  "img": "EcmXlicr7pVZnoiitdI-FbAu.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "624dcd3c03b1519ed3faeefb"
+  },
+  "name": "TWITCH",
+  "category": "Raro",
+  "type": "Hechizo",
+  "coste": 1,
+  "dmg": 0,
+  "vida": 0,
+  "text": "Otorga 3 ethereum momentaneo",
+  "obtenible": true,
+  "img": "NjiMFa30KnxdGDLmYFS7qNuU.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "624dc93503b1519ed3faeebc"
+  },
+  "name": "DALAS",
+  "category": "Raro",
+  "type": "Esbirro",
+  "coste": 4,
+  "dmg": 2,
+  "vida": 1,
+  "text": "Destruye un Esbirro con 8 o menos de daño",
+  "obtenible": true,
+  "img": "Cw4OqkBPi_rZCkNUqTRfw6A_.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "624dca1e03b1519ed3faeece"
+  },
+  "name": "HORCUS",
+  "category": "Raro",
+  "type": "Esbirro",
+  "coste": 3,
+  "dmg": 2,
+  "vida": 2,
+  "text": "Inflinje 2 de daño a un objectivo",
+  "obtenible": true,
+  "img": "RgRS88evYL5azCSkzsEYQ0-R.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "624dcd0103b1519ed3faeef5"
+  },
+  "name": "RAID",
+  "category": "Raro",
+  "type": "Hechizo",
+  "coste": 3,
+  "dmg": 0,
+  "vida": 0,
+  "text": "Llena la mesa de Espectadores +1 +1",
+  "obtenible": true,
+  "img": "cKp0fzNLJJtK-WB7a--Na22Y.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "624dcb9c03b1519ed3faeee0"
+  },
+  "name": "MOMOLADINASTIA",
+  "category": "Raro",
+  "type": "Esbirro",
+  "coste": 3,
+  "dmg": 1,
+  "vida": 3,
+  "text": "Cuando ataka se buff +1 +1",
+  "obtenible": true,
+  "img": "UAw6fEZtDQLYDbhSYExlu2C5.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "624dcdb403b1519ed3faef07"
+  },
+  "name": "TONACHO",
+  "category": "Comun",
+  "type": "Esbirro",
+  "coste": 2,
+  "dmg": 1,
+  "vida": 2,
+  "text": "se quedo sin redstone",
+  "obtenible": true,
+  "img": "QzBxgYY4xwLHEk_gaXh5iAup.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "624dcdd103b1519ed3faef0a"
+  },
+  "name": "STREAMER",
+  "category": "Comun",
+  "type": "Esbirro",
+  "coste": 1,
+  "dmg": 2,
+  "vida": 1,
+  "text": "-",
+  "obtenible": true,
+  "img": "DoMHBVcjeaXOZUUqNL8Gz9J8.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "624dcde303b1519ed3faef0d"
+  },
+  "name": "HOT_TUB_STREAMER",
+  "category": "Comun",
+  "type": "Esbirro",
+  "coste": 2,
+  "dmg": 2,
+  "vida": 2,
+  "text": "-",
+  "obtenible": true,
+  "img": "XPSX80w-qY_Br4sS8MFZ3MXT.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "624dcdf403b1519ed3faef10"
+  },
+  "name": "GARMY",
+  "category": "Comun",
+  "type": "Esbirro",
+  "coste": 3,
+  "dmg": 3,
+  "vida": 3,
+  "text": "-",
+  "obtenible": true,
+  "img": "SkpjXSUuJZUJW8NEiZEhlmfk.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "624dce2203b1519ed3faef19"
+  },
+  "name": "OTAKU",
+  "category": "Comun",
+  "type": "Esbirro",
+  "coste": 1,
+  "dmg": 1,
+  "vida": 3,
+  "text": "-",
+  "obtenible": true,
+  "img": "tMmrPiwBlifC3Ih1KNCofxoJ.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "624dce3003b1519ed3faef1c"
+  },
+  "name": "MLDR",
+  "category": "Comun",
+  "type": "Esbirro",
+  "coste": 2,
+  "dmg": 2,
+  "vida": 3,
+  "text": "-",
+  "obtenible": true,
+  "img": "9j9OuIvUHvf7dCp4_zL4GCEQ.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "624dce7803b1519ed3faef1f"
+  },
+  "name": "BARBEQ",
+  "category": "Comun",
+  "type": "Esbirro",
+  "coste": 6,
+  "dmg": 4,
+  "vida": 3,
+  "text": "buffa +2 +2 un aliado",
+  "obtenible": true,
+  "img": "5HfCUsy3tZ2SwQpLMImYV6xh.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "624dce8e03b1519ed3faef22"
+  },
+  "name": "BIGCHUNGUS",
+  "category": "Comun",
+  "type": "Esbirro",
+  "coste": 7,
+  "dmg": 6,
+  "vida": 10,
+  "text": "-",
+  "obtenible": true,
+  "img": "KWS_d2zdtE0glzfWXFHbuzS6.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "624dcecd03b1519ed3faef25"
+  },
+  "name": "LUCILLE",
+  "category": "Comun",
+  "type": "Esbirro",
+  "coste": 4,
+  "dmg": 3,
+  "vida": 2,
+  "text": "Por el daño que haga te curas a la cara",
+  "obtenible": true,
+  "img": "Bb0kkWGgfevTwRf6EiVwC6H6.png",
+  "__v": 0
+}]

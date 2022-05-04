@@ -1,6 +1,7 @@
 'use strict'
 
 const Usuario = require("../models/User");
+const BeginCard= require("../begincard/begincard.json");
 var session={};
 
 //Crypto
@@ -54,8 +55,8 @@ var controller = {
         user.email = params.email
         user.password = encrypt(params.pasw)  
         user.moneda = 0
-        user.cartas = []
-        user.mazos = []
+        user.cartas = BeginCard
+        user.mazos = {"mazo1":["facturas","twitch","dalas","horcus","raid","momoladinastia","tonacho","streamer","hot_tub_streamer","garmy","otaku","mldr","barbeq","bigchungus","lucille"]}
         user.save()
             .then(userStored=>{
                 if(!userStored) return res.status(404).send({message: "Document no desat"});
