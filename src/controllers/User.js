@@ -56,7 +56,7 @@ var controller = {
         user.password = encrypt(params.pasw)  
         user.moneda = 0
         user.cartas = BeginCard
-        user.mazos = {"mazo1":["facturas","twitch","dalas","horcus","raid","momoladinastia","tonacho","streamer","hot_tub_streamer","garmy","otaku","mldr","barbeq","bigchungus","lucille"]}
+        user.mazos = {"Defaul Deck":["facturas","twitch","dalas","horcus","raid","momoladinastia","tonacho","streamer","hot_tub_streamer","garmy","otaku","mldr","barbeq","bigchungus","lucille"]}
         user.save()
             .then(userStored=>{
                 if(!userStored) return res.status(404).send({message: "Document no desat"});
@@ -124,7 +124,7 @@ var controller = {
         Usuario.findOneAndUpdate({ nick: nick }, update,{new:true})
             .then(DeckUpdate => {
                 if(!DeckUpdate) return res.status(404).send({message:"L'usuari no existeix"});
-                return res.status(200).send({Updated:DeckUpdate});
+                return res.status(200).send({mazos:DeckUpdate});
             })
             .catch(err => {
                 return res.status(500).send({message:"Error actualitzant les dades"});
