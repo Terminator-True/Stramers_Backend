@@ -44,6 +44,8 @@ router.get("/get-cards/:nick?",UserController.getCards)
 router.put("/updeck/:nick?",UserController.updateDeck)
 //Get per a tots els malls
 router.get("/get-decks/:nick?",UserController.getDecks)
+//Update per les cartes
+router.put("/updateCards/:nick?",UserController.updateCards)
 
 
 
