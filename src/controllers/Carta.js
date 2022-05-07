@@ -3,6 +3,40 @@
 const Carta = require("../models/Carta");
 const fs = require("fs");
 const path = require("path")
+let DailyCardsArray=[];
+
+function DailyCards() {
+    Carta.aggregate([
+        {$match:{category: "Comun"}},
+        {$sample:{size: 2}}
+    ])
+        .then(cards => { 
+            DailyCardsArray.push(cards);
+        })    
+     Carta.aggregate([
+        {$match:{category: "Raro"}},
+        {$sample:{size: 2}}
+    ])
+        .then(cards => { 
+            DailyCardsArray.push(cards);
+        })
+    Carta.aggregate([
+        {$match:{category: "Epica"}},
+        {$sample:{size: 1}}
+    ])
+        .then(cards => { 
+            DailyCardsArray.push(cards);
+        })
+        console.log(DailyCardsArray)
+    return DailyCardsArray;
+}
+DailyCardsArray=DailyCards()
+
+setInterval(()=>{
+    DailyCardsArray=DailyCards()
+},86400000)
+        
+
 var controller = {
     home: function( req, res){
         return res.status(200).send({
@@ -113,7 +147,7 @@ var controller = {
     getImage: function(req,res){
         var file = req.params.img
         var path_file = "./src/uploads/"+file
-        console.log(path_file)
+        //console.log(path_file)
         fs.exists(path_file, (exists)=>{
             if (exists) {
                 return res.sendFile(path.resolve(path_file))
@@ -157,7 +191,10 @@ var controller = {
                         return res.status(500).send({message:"Error al retornar les dades"});
                 });
         }
-    }
+    },
+    getDailyCards: function(req,res){
+        return res.status(200).send({DailyCardsArray});
+    },
 };
 
 module.exports = controller;

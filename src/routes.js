@@ -26,7 +26,9 @@ router.delete("/cartas/:id?",CardController.deleteCard)
 //Pujar foto de la carta
 router.post("/upload-image/:id",multiparMiddleware,CardController.uploadImage)
 //Actualizar carta
-router.put("/modifica/:id?",CardController.updateCard)  
+router.put("/modifica/:id?",CardController.updateCard) 
+//Demana la rotació de cartes diaries
+router.get("/daily",CardController.getDailyCards)
 //-------------------
 //Rutas Users
 //-------------------

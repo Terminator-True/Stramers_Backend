@@ -117,6 +117,20 @@ var controller = {
         }
 
     },
+    updateCards: function(req, res){
+        var nick = req.params.nick;
+        var update = req.body;
+        console.log(update)
+        Usuario.findOneAndUpdate({ nick: nick }, update,{new:true})
+            .then(CardUpdate => {
+                console.log(CardUpdate)
+                if(!CardUpdate) return res.status(404).send({message:"L'usuari no existeix"});
+                return res.status(200).send({cards:CardUpdate});
+            })
+            .catch(err => {
+                return res.status(500).send({message:"Error actualitzant les dades"});
+            })
+    },
      updateDeck: function(req, res){
         var nick = req.params.nick;
         var update = req.body;
@@ -147,20 +161,6 @@ var controller = {
                 });
         }
 
-    },
-    updateCards: function(req, res){
-        var nick = req.params.nick;
-        var update = req.body;
-        // console.log(update)
-        Usuario.findOneAndUpdate({ nick: nick }, update,{new:true})
-            .then(CardUpdate => {
-                console.log(CardUpdate)
-                if(!CardUpdate) return res.status(404).send({message:"L'usuari no existeix"});
-                return res.status(200).send({cards:CardUpdate});
-            })
-            .catch(err => {
-                return res.status(500).send({message:"Error actualitzant les dades"});
-            })
     },
 }
 module.exports = controller;
