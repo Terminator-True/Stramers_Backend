@@ -1,7 +1,5 @@
 [{
-  "_id": {
-    "$oid": "624dcd2403b1519ed3faeef8"
-  },
+  "_id": "624dcd2403b1519ed3faeef8",
   "name": "FACTURAS",
   "category": "Raro",
   "type": "Hechizo",
@@ -13,9 +11,7 @@
   "img": "EcmXlicr7pVZnoiitdI-FbAu.png",
   "__v": 0
 },{
-  "_id": {
-    "$oid": "624dcd3c03b1519ed3faeefb"
-  },
+  "_id": "624dcd3c03b1519ed3faeefb",
   "name": "TWITCH",
   "category": "Raro",
   "type": "Hechizo",
@@ -27,9 +23,7 @@
   "img": "NjiMFa30KnxdGDLmYFS7qNuU.png",
   "__v": 0
 },{
-  "_id": {
-    "$oid": "624dc93503b1519ed3faeebc"
-  },
+  "_id":"624dc93503b1519ed3faeebc",
   "name": "DALAS",
   "category": "Raro",
   "type": "Esbirro",
@@ -41,9 +35,7 @@
   "img": "Cw4OqkBPi_rZCkNUqTRfw6A_.png",
   "__v": 0
 },{
-  "_id": {
-    "$oid": "624dca1e03b1519ed3faeece"
-  },
+  "_id": "624dca1e03b1519ed3faeece",
   "name": "HORCUS",
   "category": "Raro",
   "type": "Esbirro",
@@ -55,9 +47,7 @@
   "img": "RgRS88evYL5azCSkzsEYQ0-R.png",
   "__v": 0
 },{
-  "_id": {
-    "$oid": "624dcd0103b1519ed3faeef5"
-  },
+  "_id": "624dcd0103b1519ed3faeef5",
   "name": "RAID",
   "category": "Raro",
   "type": "Hechizo",
@@ -69,9 +59,7 @@
   "img": "cKp0fzNLJJtK-WB7a--Na22Y.png",
   "__v": 0
 },{
-  "_id": {
-    "$oid": "624dcb9c03b1519ed3faeee0"
-  },
+  "_id":"624dcb9c03b1519ed3faeee0",
   "name": "MOMOLADINASTIA",
   "category": "Raro",
   "type": "Esbirro",
@@ -83,9 +71,7 @@
   "img": "UAw6fEZtDQLYDbhSYExlu2C5.png",
   "__v": 0
 },{
-  "_id": {
-    "$oid": "624dcdb403b1519ed3faef07"
-  },
+  "_id":"624dcdb403b1519ed3faef07",
   "name": "TONACHO",
   "category": "Comun",
   "type": "Esbirro",
@@ -97,9 +83,7 @@
   "img": "QzBxgYY4xwLHEk_gaXh5iAup.png",
   "__v": 0
 },{
-  "_id": {
-    "$oid": "624dcdd103b1519ed3faef0a"
-  },
+  "_id": "624dcdd103b1519ed3faef0a",
   "name": "STREAMER",
   "category": "Comun",
   "type": "Esbirro",
@@ -111,9 +95,7 @@
   "img": "DoMHBVcjeaXOZUUqNL8Gz9J8.png",
   "__v": 0
 },{
-  "_id": {
-    "$oid": "624dcde303b1519ed3faef0d"
-  },
+  "_id": "624dcde303b1519ed3faef0d",
   "name": "HOT_TUB_STREAMER",
   "category": "Comun",
   "type": "Esbirro",
@@ -125,9 +107,7 @@
   "img": "XPSX80w-qY_Br4sS8MFZ3MXT.png",
   "__v": 0
 },{
-  "_id": {
-    "$oid": "624dcdf403b1519ed3faef10"
-  },
+  "_id":"624dcdf403b1519ed3faef10",
   "name": "GARMY",
   "category": "Comun",
   "type": "Esbirro",
@@ -139,9 +119,7 @@
   "img": "SkpjXSUuJZUJW8NEiZEhlmfk.png",
   "__v": 0
 },{
-  "_id": {
-    "$oid": "624dce2203b1519ed3faef19"
-  },
+  "_id":"624dce2203b1519ed3faef19",
   "name": "OTAKU",
   "category": "Comun",
   "type": "Esbirro",
@@ -153,9 +131,7 @@
   "img": "tMmrPiwBlifC3Ih1KNCofxoJ.png",
   "__v": 0
 },{
-  "_id": {
-    "$oid": "624dce3003b1519ed3faef1c"
-  },
+  "_id":"624dce3003b1519ed3faef1c",
   "name": "MLDR",
   "category": "Comun",
   "type": "Esbirro",
@@ -167,9 +143,7 @@
   "img": "9j9OuIvUHvf7dCp4_zL4GCEQ.png",
   "__v": 0
 },{
-  "_id": {
-    "$oid": "624dce7803b1519ed3faef1f"
-  },
+  "_id": "624dce7803b1519ed3faef1f",
   "name": "BARBEQ",
   "category": "Comun",
   "type": "Esbirro",
@@ -181,9 +155,7 @@
   "img": "5HfCUsy3tZ2SwQpLMImYV6xh.png",
   "__v": 0
 },{
-  "_id": {
-    "$oid": "624dce8e03b1519ed3faef22"
-  },
+  "_id":"624dce8e03b1519ed3faef22",
   "name": "BIGCHUNGUS",
   "category": "Comun",
   "type": "Esbirro",
@@ -195,9 +167,7 @@
   "img": "KWS_d2zdtE0glzfWXFHbuzS6.png",
   "__v": 0
 },{
-  "_id": {
-    "$oid": "624dcecd03b1519ed3faef25"
-  },
+  "_id":"624dcecd03b1519ed3faef25",
   "name": "LUCILLE",
   "category": "Comun",
   "type": "Esbirro",
