@@ -4,6 +4,8 @@ var express = require('express');
 var CardController = require("./controllers/Carta")
 var UserController = require("./controllers/User")
 var RuletaController = require("./controllers/Ruleta")
+var ImagesController = require("./controllers/Images")
+
 
 var router = express.Router();
 //Paquete necesario para poder subir archivos por post
@@ -59,5 +61,9 @@ router.get("/get-image-roulete/:img",RuletaController.getImage)
 router.get("/get-card-type/:type",CardController.getCardsByType)
 router.get("/get-card-category/:category",CardController.getCardsByCateg)
 
+//-------------------
+//Rutas Images
+//-------------------
+router.get("/get-image-ico/:img",ImagesController.getImage)
 
 module.exports = router;
