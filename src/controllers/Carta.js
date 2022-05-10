@@ -4,24 +4,26 @@ const Carta = require("../models/Carta");
 const fs = require("fs");
 const path = require("path")
 let DailyCardsArray=[];
+let RouletteCardsArray=[];
+
 
 function DailyCards() {
     Carta.aggregate([
-        {$match:{category: "Comun"}},
+        {$match:{category: "Comun",obtenible:true}},
         {$sample:{size: 2}}
     ])
         .then(cards => { 
             DailyCardsArray.push(cards);
         })    
      Carta.aggregate([
-        {$match:{category: "Raro"}},
+        {$match:{category: "Raro",obtenible:true}},
         {$sample:{size: 2}}
     ])
         .then(cards => { 
             DailyCardsArray.push(cards);
         })
     Carta.aggregate([
-        {$match:{category: "Epica"}},
+        {$match:{category: "Epica",obtenible:true}},
         {$sample:{size: 1}}
     ])
         .then(cards => { 
@@ -30,8 +32,45 @@ function DailyCards() {
         console.log(DailyCardsArray)
     return DailyCardsArray;
 }
-DailyCardsArray=DailyCards()
 
+function RouletteCards() {
+    Carta.aggregate([
+        {$match:{category: "Comun",obtenible:true}},
+        {$sample:{size: 2}}
+    ])
+        .then(cards => { 
+            RouletteCardsArray.push(cards);
+        })    
+     Carta.aggregate([
+        {$match:{category: "Raro",obtenible:true}},
+        {$sample:{size: 2}}
+    ])
+        .then(cards => { 
+            RouletteCardsArray.push(cards);
+        })
+    Carta.aggregate([
+        {$match:{category: "Epica",obtenible:true}},
+        {$sample:{size: 1}}
+    ])
+        .then(cards => { 
+            RouletteCardsArray.push(cards);
+        })
+    Carta.aggregate([
+        {$match:{category: "Legend",obtenible:true}},
+        {$sample:{size: 1}}
+    ])
+        .then(cards => { 
+            RouletteCardsArray.push(cards);
+        })
+        return RouletteCardsArray;
+
+}
+RouletteCardsArray=RouletteCards()        
+setInterval(()=>{
+    RouletteCardsArray=RouletteCards()        
+},300000)
+
+DailyCardsArray=DailyCards()
 setInterval(()=>{
     DailyCardsArray=DailyCards()
 },86400000)
@@ -194,6 +233,9 @@ var controller = {
     },
     getDailyCards: function(req,res){
         return res.status(200).send({DailyCardsArray});
+    },
+    getRouletteCards: function(req,res){
+        return res.status(200).send(RouletteCardsArray);
     },
 };
 

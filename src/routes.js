@@ -58,8 +58,8 @@ router.put("/updateCards/:nick?",UserController.updateCards)
 //-------------------
 router.get("/get-image-roulete/:img",RuletaController.getImage)
 
-router.get("/get-card-type/:type",CardController.getCardsByType)
-router.get("/get-card-category/:category",CardController.getCardsByCateg)
+router.get("/get-card-roulette/",CardController.getRouletteCards)
+
 
 //-------------------
 //Rutas Images
