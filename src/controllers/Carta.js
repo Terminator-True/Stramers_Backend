@@ -65,10 +65,10 @@ function RouletteCards() {
         return RouletteCardsArray;
 
 }
-RouletteCardsArray=RouletteCards()        
+//RouletteCardsArray=RouletteCards()        
 setInterval(()=>{
     RouletteCardsArray=RouletteCards()        
-},300000)
+},60000)
 
 DailyCardsArray=DailyCards()
 setInterval(()=>{
