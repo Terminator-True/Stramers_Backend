@@ -61,18 +61,19 @@ function RouletteCards() {
     ])
         .then(cards => { 
             RouletteCardsArray.push(cards);
-        })
-        return RouletteCardsArray;
+        })  
 
 }
-//RouletteCardsArray=RouletteCards()        
-setInterval(()=>{
-    RouletteCardsArray=RouletteCards()        
-},60000)
+RouletteCards()        
+    setInterval(()=>{
+        RouletteCardsArray=[];
+        RouletteCards()        
+    },60000)
 
-DailyCardsArray=DailyCards()
+DailyCards()
 setInterval(()=>{
-    DailyCardsArray=DailyCards()
+    DailyCardsArray=[];
+    DailyCards()
 },86400000)
         
 
