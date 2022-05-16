@@ -1,12 +1,24 @@
 'use strict'
-
+//Importación del modelo 
 const Carta = require("../models/Carta");
+
+//Import de paquetes necesarios para poder subir 
+//archivos al server
 const fs = require("fs");
 const path = require("path")
+
+//Definición de variables
 let DailyCardsArray=[];
 let RouletteCardsArray=[];
 
 
+/**
+ * Función que llena la array DailyCardsArray con cartas aleatorias
+ * destinadas a la tienda
+ *  - 2 comunes
+ *  - 2 Raras
+ *  - 1 Epica
+ */
 function DailyCards() {
     Carta.aggregate([
         {$match:{category: "Comun",obtenible:true}},
@@ -33,6 +45,14 @@ function DailyCards() {
     return DailyCardsArray;
 }
 
+/**
+ * Función que llena la array RouletteCardsArray con cartas aleatorias destinadas
+ * a la ruleta:
+ *  - 2 comunes
+ *  - 2 Raras
+ *  - 1 Epica
+ *  - 1 Legendaria
+ */
 function RouletteCards() {
     Carta.aggregate([
         {$match:{category: "Comun",obtenible:true}},
@@ -70,25 +90,36 @@ function RouletteCards() {
         }, 750);
     
 }
-RouletteCards()        
-    setInterval(()=>{
-        RouletteCardsArray=[];
-        RouletteCards()        
-    },60000)
 
+// Se llaman a las dos funciones para que al iniciar el servicio
+// las arrays estén listas para su uso
+RouletteCards()     
 DailyCards()
+
+/**
+ * Se renuevan las arrays con cartas nuevas:
+ *  -La ruleta se renueva cada minuto
+ *  -Las cartas de la tienda se renuevan cada 24 h
+ */
+setInterval(()=>{
+    RouletteCardsArray=[];
+    RouletteCards()        
+},60000)
+
 setInterval(()=>{
     DailyCardsArray=[];
     DailyCards()
 },86400000)
         
-
+/**
+ * Controlador de Carta
+ */
 var controller = {
-    home: function( req, res){
-        return res.status(200).send({
-            message:'pagina'
-        });
-    },
+
+    /**
+     * @param Id Id de la carta 
+     * @returns la carta correspondiente segñun el id pasado por parámetro
+     */
     getCard: function(req, res){
         var Id = req.query.id;
         //console.log(Id)
@@ -108,6 +139,9 @@ var controller = {
         }
 
     }, 
+    /**
+     * @return Devuelve todas las cartas existientes en la base de datos
+     */
     getCards: function(req, res){
         Carta.find({})
             .then(cards => {
@@ -119,6 +153,20 @@ var controller = {
             })
 
     },
+    /**
+     * Recive una carta nueva, con todas sus características y
+     * la guarda en la base de datos
+     * @param params: 
+     *  @var name
+     *  @var category Categoría de la carta: Epica,Rara,Común o Legendaria
+     *  @var type Hechizo o Esbirro
+     *  @var coste 
+     *  @var dmg
+     *  @var vida
+     *  @var text Descripción corta de lo que hace la carta
+     *  @var obtenible Depenent de si es pot obtenir o no es true o false
+     *  @var img
+     */
     saveCard:  function( req, res ){
         var card = new Carta();
         var params = req.body;
@@ -144,6 +192,10 @@ var controller = {
             })
 
     },
+    /**
+     * Elimina la carta especificada por parámetro
+     * @param Id 
+     */
     deleteCard: function(req, res){
         var Id = req.query.id;
         Carta.findByIdAndDelete(Id)
@@ -157,6 +209,11 @@ var controller = {
             })
 
     },
+    /**
+     * Sube una imagen y la asigna a la carta de la ID pasada 
+     * por parámetro
+     * @param Id 
+     */
     uploadImage: function(req, res){
         var Id = req.params.id;
         var fileName = "imatge no pujada"
@@ -178,6 +235,10 @@ var controller = {
             return res.status(500).send({message:fileName})
         }
     },
+    /**
+     * Actualiza la carta especificada por parámetro
+     * @param ID 
+     */
     updateCard: function(req, res){
         var Id = req.params.id;
         var update = req.body;
@@ -190,6 +251,10 @@ var controller = {
                 return res.status(500).send({message:"Error actualitzant les dades"});
             })
     },
+    /**
+     * Devuelve la imagen especificada por parámetro
+     * @param img string con el nombre de la imagen
+     */
     getImage: function(req,res){
         var file = req.params.img
         var path_file = "./src/uploads/"+file
@@ -202,6 +267,10 @@ var controller = {
             }
         })
     },
+    /**
+     * Devuelve todas las cartas de el tipo que se especifica por parámetro
+     * @param Type tipo de la carta: Hechizo, Esbirro
+     */
     getCardsByType: function(req, res){
         var type = req.params.type;
         console.log(type)
@@ -220,6 +289,10 @@ var controller = {
                 });
         }
     },
+    /**
+     * Devuelve todas las cartas de la categoría que se especifica por parámetro
+     * @param Category categoría de la carta: Común,Épica,Legendaria,Rara
+     */
     getCardsByCateg: function(req, res){
         var category = req.params.category;
         console.log(category)
@@ -238,9 +311,15 @@ var controller = {
                 });
         }
     },
+    /**
+     * Devuelve una array con las cartas destinadas a la tienda
+     */
     getDailyCards: function(req,res){
         return res.status(200).send({DailyCardsArray});
     },
+    /**
+     * Devuelve una array con las cartas destinadas a la ruleta
+     */
     getRouletteCards: function(req,res){
         return res.status(200).send(RouletteCardsArray);
     },

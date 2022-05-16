@@ -4,13 +4,20 @@ const Usuario = require("../models/User");
 const BeginCard= require("../begincard/begincard.json");
 var session={};
 
-//Crypto
+// Importación de el paquete de encriptación
 const crypto = require('crypto');
-
+//Algoritmo utilizado para encriptar
 const algorithm = 'aes-256-ctr';
+//Clave secreta general para desencriptar
 const secretKey = 'vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3';
+//Clave generada automáticamente
 const iv = crypto.randomBytes(16);
 
+/**
+ * Función que encripta un texto pasado por parámetro
+ * @param {*} text texto a encriptar
+ * @returns Un objeto con el codigo Iv necesario para desencriptar y la propia password encriptada
+ */
 function encrypt(text) {
     const cipher = crypto.createCipheriv(algorithm, secretKey, iv);
 
@@ -21,6 +28,11 @@ function encrypt(text) {
         content: encrypted.toString('hex')
     };
 }
+/**
+ * Función que desencripta un texto pasado por parámetro
+ * @param hash un objeto con el codigo Iv necesario para desencriptar y la propia password encriptada
+ * @returns La password desencriptada
+ */
 function decrypt(hash) {
 
     const decipher = crypto.createDecipheriv(algorithm, secretKey, Buffer.from(hash.iv, 'hex'));
@@ -57,6 +69,7 @@ var controller = {
         user.moneda = 0
         user.cartas = BeginCard
         user.mazos = {"Defaul Deck":["facturas","twitch","dalas","horcus","raid","momoladinastia","tonacho","streamer","hot_tub_streamer","garmy","otaku","mldr","barbeq","bigchungus","lucille"]}
+        user.mazo = ["facturas","twitch","dalas","horcus","raid","momoladinastia","tonacho","streamer","hot_tub_streamer","garmy","otaku","mldr","barbeq","bigchungus","lucille"]
         user.save()
             .then(userStored=>{
                 if(!userStored) return res.status(404).send({message: "Document no desat"});
@@ -67,6 +80,22 @@ var controller = {
                 return res.status(500).send({message: "Error desant dades"});
             })
 
+    },
+    updateUser: function(req, res){
+        var password = req.body.passwd
+        var nick = req.params.nick;
+        var update = req.body;
+        Usuario.findOneAndUpdate({ nick: nick }, update,{new:true})
+            .then(userUpdated => {
+                if(decrypt(userUpdated.password)!=password){
+                    return res.status(404).send({message:"Error, password incorrecte"});
+                } else{
+                    return res.status(200).send("ok");
+                }
+            })
+            .catch(err => {
+                return res.status(500).send({message:"Error actualitzant les dades"});
+            })
     },
     getMoney: function(req, res){
         var nick = req.params.nick;

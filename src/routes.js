@@ -33,7 +33,6 @@ router.post("/upload-image/:id",multiparMiddleware,CardController.uploadImage)
 router.put("/modifica/:id?",CardController.updateCard) 
 //Demana la rotació de cartes diaries
 router.get("/daily",CardController.getDailyCards)
-
 //-------------------
 //Rutas Users
 //-------------------
@@ -59,7 +58,7 @@ router.put("/updateCards/:nick?",UserController.updateCards)
 //-------------------
 //Rutas Ruleta
 //-------------------
-router.get("/get-image-roulete/:img",RuletaController.getImage)
+router.get("/get-image-roulete/:img",RuletaController.getResource)
 
 router.get("/get-card-roulette/",CardController.getRouletteCards)
 
