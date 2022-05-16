@@ -40,29 +40,35 @@ function RouletteCards() {
     ])
         .then(cards => { 
             RouletteCardsArray.push(cards);
-        })    
-     Carta.aggregate([
-        {$match:{category: "Raro",obtenible:true}},
-        {$sample:{size: 2}}
-    ])
-        .then(cards => { 
-            RouletteCardsArray.push(cards);
-        })
-    Carta.aggregate([
-        {$match:{category: "Epica",obtenible:true}},
-        {$sample:{size: 1}}
-    ])
-        .then(cards => { 
-            RouletteCardsArray.push(cards);
-        })
-    Carta.aggregate([
-        {$match:{category: "Legend",obtenible:true}},
-        {$sample:{size: 1}}
-    ])
-        .then(cards => { 
-            RouletteCardsArray.push(cards);
-        })  
-
+        })   
+        setTimeout(() => {
+            Carta.aggregate([
+                {$match:{category: "Raro",obtenible:true}},
+                {$sample:{size: 2}}
+            ])
+                .then(cards => { 
+                    RouletteCardsArray.push(cards);
+                })
+        }, 250); 
+        setTimeout(() => {
+            Carta.aggregate([
+                {$match:{category: "Epica",obtenible:true}},
+                {$sample:{size: 1}}
+            ])
+                .then(cards => { 
+                    RouletteCardsArray.push(cards);
+                })
+        }, 500);
+        setTimeout(() => {
+            Carta.aggregate([
+                {$match:{category: "Legend",obtenible:true}},
+                {$sample:{size: 1}}
+            ])
+                .then(cards => { 
+                    RouletteCardsArray.push(cards);
+                })  
+        }, 750);
+    
 }
 RouletteCards()        
     setInterval(()=>{

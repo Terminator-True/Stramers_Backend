@@ -13,7 +13,9 @@ var multipart = require("connect-multiparty");
 //Especificamos la rita de descarga
 var multiparMiddleware = multipart({uploadDir: "./src/uploads"})
 
+//-------------------
 //Rutas Cartas
+//-------------------
 router.get("/",CardController.home)
 //Busca carta por id  
 router.get("/carta/:id?",CardController.getCard)  
@@ -31,6 +33,7 @@ router.post("/upload-image/:id",multiparMiddleware,CardController.uploadImage)
 router.put("/modifica/:id?",CardController.updateCard) 
 //Demana la rotació de cartes diaries
 router.get("/daily",CardController.getDailyCards)
+
 //-------------------
 //Rutas Users
 //-------------------
