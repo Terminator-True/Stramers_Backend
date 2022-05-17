@@ -16,7 +16,6 @@ var multiparMiddleware = multipart({uploadDir: "./src/uploads"})
 //-------------------
 //Rutas Cartas
 //-------------------
-router.get("/",CardController.home)
 //Busca carta por id  
 router.get("/carta/:id?",CardController.getCard)  
 //Devuelve todas las cartas
