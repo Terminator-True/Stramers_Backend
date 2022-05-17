@@ -9,7 +9,8 @@ var UserSchema = schema({
     password: {},
     cartas: {},
     mazos: {},
-    moneda:String
+    moneda:String,
+    mazo:[]
 });
 
 module.exports = mongoose.model('Usuarios', UserSchema)

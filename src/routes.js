@@ -51,8 +51,8 @@ router.put("/updeck/:nick?",UserController.updateDeck)
 router.get("/get-decks/:nick?",UserController.getDecks)
 //Update per les cartes
 router.put("/updateCards/:nick?",UserController.updateCards)
-
-
+//Get del mazo predeterminado
+router.get("/get-getDefaultDeck/:nick",UserController.getDefaultDeck)
 
 //-------------------
 //Rutas Ruleta
