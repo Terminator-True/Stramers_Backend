@@ -165,7 +165,7 @@ var controller = {
      *  @var vida
      *  @var text Descripción corta de lo que hace la carta
      *  @var obtenible Depenent de si es pot obtenir o no es true o false
-     *  @var img
+     *  @var img Nombre de la imagen
      */
     saveCard:  function( req, res ){
         var card = new Carta();

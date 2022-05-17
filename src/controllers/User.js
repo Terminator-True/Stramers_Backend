@@ -15,7 +15,7 @@ const iv = crypto.randomBytes(16);
 
 /**
  * Función que encripta un texto pasado por parámetro
- * @param {*} text texto a encriptar
+ * @param text texto a encriptar
  * @returns Un objeto con el codigo Iv necesario para desencriptar y la propia password encriptada
  */
 function encrypt(text) {
@@ -30,7 +30,7 @@ function encrypt(text) {
 }
 /**
  * Función que desencripta un texto pasado por parámetro
- * @param hash un objeto con el codigo Iv necesario para desencriptar y la propia password encriptada
+ * @param hash Un objeto con el codigo Iv necesario para desencriptar y la propia password encriptada
  * @returns La password desencriptada
  */
 function decrypt(hash) {
