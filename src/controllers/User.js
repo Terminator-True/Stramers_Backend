@@ -6,6 +6,7 @@ var session={};
 
 // Importación de el paquete de encriptación
 const crypto = require('crypto');
+const { Console } = require("console");
 //Algoritmo utilizado para encriptar
 const algorithm = 'aes-256-ctr';
 //Clave secreta general para desencriptar
@@ -49,14 +50,14 @@ var controller = {
             .then(user => {
                 //console.log(user)
                 if(decrypt(user.password)!=password){
-                    return res.status(404).send({message:"Error, password incorrecte"});
+                    return res.status(404).send({message:"Error, email o password incorrecte"});
                 } else{
                     session.user = user;
                     return res.status(200).send({session});
                 }
             })
             .catch(err => {
-                return res.status(500).send({message:"Error user incorrecte"});
+                return res.status(500).send({message:"Error, email o password incorrecte"});
             })
     },
     register:  function( req, res ){
@@ -70,15 +71,30 @@ var controller = {
         user.cartas = BeginCard
         user.mazos = {"Defaul Deck":["facturas","twitch","dalas","horcus","raid","momoladinastia","tonacho","streamer","hot_tub_streamer","garmy","otaku","mldr","barbeq","bigchungus","lucille"]}
         user.mazo = ["facturas","twitch","dalas","horcus","raid","momoladinastia","tonacho","streamer","hot_tub_streamer","garmy","otaku","mldr","barbeq","bigchungus","lucille"]
-        user.save()
-            .then(userStored=>{
-                if(!userStored) return res.status(404).send({message: "Document no desat"});
-
-                return res.status(200).send({user: userStored});
-            })
-            .catch(err => {
-                return res.status(500).send({message: "Error desant dades"});
-            })
+        Usuario.find({ nick: user.nick })
+        .then(exists=>{
+            console.log(exists)
+            if (exists.length!==0) {
+                return res.status(404).send({message: "Nick existent"});
+            }else{
+                Usuario.find({ email:user.email })
+                .then(exists=>{
+                    if (exists.length!==0) {
+                        return res.status(404).send({message: "Email existent"});
+                    }else{
+                        user.save()
+                        .then(userStored=>{
+                            if(!userStored) return res.status(404).send({message: "Document no desat"});
+            
+                            return res.status(200).send({user: userStored});
+                        })
+                        .catch(err => {
+                            return res.status(500).send({message: "Error desant dades"});
+                        })
+                    }
+                })
+            }
+        })
 
     },
     updateUser: function(req, res){
