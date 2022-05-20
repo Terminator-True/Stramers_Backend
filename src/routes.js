@@ -53,8 +53,11 @@ router.get("/get-decks/:nick?",UserController.getDecks)
 router.put("/updateCards/:nick?",UserController.updateCards)
 //Get del mazo predeterminado
 router.get("/get-getDefaultDeck/:nick",UserController.getDefaultDeck)
+//Update mazo predeterminado
+router.put("/set-DefaultDeck/:nick",UserController.setDefaultDeck)
+
 //Delete mazo por nombre
-router.delete("/deletedeck/:nick/:deckname",UserController.deleteDeck)
+router.put("/deletedeck/:nick",UserController.deleteDeck)
 
 //-------------------
 //Rutas Ruleta

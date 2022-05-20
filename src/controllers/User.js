@@ -151,6 +151,7 @@ var controller = {
             Usuario.find({nick: nick })
                 .then(user => { 
                         let cartes = user[0].cartas
+                        console.log(cartes)
                         if(!user) return res.status(404).send({message:"Usuari no existent"});
                         //console.log(moneda)
                         return res.status(200).send({cartes});
@@ -179,6 +180,18 @@ var controller = {
         var nick = req.params.nick;
         var update = req.body;
         console.log(update)
+        Usuario.findOneAndUpdate({ nick: nick }, update,{new:true})
+            .then(DeckUpdate => {
+                if(!DeckUpdate) return res.status(404).send({message:"L'usuari no existeix"});
+                return res.status(200).send({mazos:DeckUpdate});
+            })
+            .catch(err => {
+                return res.status(500).send({message:"Error actualitzant les dades"});
+            })
+    },
+    setDefaultDeck: function(req, res){
+        var nick = req.params.nick;
+        var update = req.body;
         Usuario.findOneAndUpdate({ nick: nick }, update,{new:true})
             .then(DeckUpdate => {
                 if(!DeckUpdate) return res.status(404).send({message:"L'usuari no existeix"});
@@ -228,14 +241,11 @@ var controller = {
     },
     deleteDeck: function(req, res){
         var nick = req.params.nick;
-        var deckanme = req.params.deckanme;
-        Usuario.aggregate([
-            {$match:{mazos: deckanme}},
-        ])
+        var deckanme = req.params.deckname;
         console.log(deckanme)
-        Usuario.findOneAndDelete({ nick: nick }, $match,{new:true})
+        Usuario.findOneAndUpdate({ nick: nick},{new:true})
             .then(DeckDelete => {
-                if(!DeckDelete) return res.status(404).send({message:"L'usuari no existeix"});
+                if(!DeckDelete) return res.status(404).send({message:"El mall no existeix"});
                 return res.status(200).send({mazos:DeckDelete});
             })
             .catch(err => {
