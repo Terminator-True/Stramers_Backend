@@ -226,5 +226,21 @@ var controller = {
         }
 
     },
+    deleteDeck: function(req, res){
+        var nick = req.params.nick;
+        var deckanme = req.params.deckanme;
+        Usuario.aggregate([
+            {$match:{mazos: deckanme}},
+        ])
+        console.log(deckanme)
+        Usuario.findOneAndDelete({ nick: nick }, $match,{new:true})
+            .then(DeckDelete => {
+                if(!DeckDelete) return res.status(404).send({message:"L'usuari no existeix"});
+                return res.status(200).send({mazos:DeckDelete});
+            })
+            .catch(err => {
+                return res.status(500).send({message:"Error actualitzant les dades"});
+            })
+    },
 }
 module.exports = controller;
