@@ -73,7 +73,6 @@ var controller = {
         user.mazo = ["facturas","twitch","dalas","horcus","raid","momoladinastia","tonacho","streamer","hot_tub_streamer","garmy","otaku","mldr","barbeq","bigchungus","lucille"]
         Usuario.find({ nick: user.nick })
         .then(exists=>{
-            console.log(exists)
             if (exists.length!==0) {
                 return res.status(404).send({message: "Nick existent"});
             }else{
@@ -98,20 +97,53 @@ var controller = {
 
     },
     updateUser: function(req, res){
-        var password = req.body.passwd
         var nick = req.params.nick;
-        var update = req.body;
-        Usuario.findOneAndUpdate({ nick: nick }, update,{new:true})
-            .then(userUpdated => {
-                if(decrypt(userUpdated.password)!=password){
-                    return res.status(404).send({message:"Error, password incorrecte"});
-                } else{
-                    return res.status(200).send("ok");
+        var update ={nick: req.body.nick, email: req.body.email};
+        Usuario.find({nick: nick})
+            .then(user=>{
+                console.log(user[0])
+                if(decrypt(user[0].password)!=req.body.pasw){
+                    return res.status(404).send({message:"Error, password incorrecto"});
+                }else{
+                    Usuario.findOneAndUpdate({ nick: nick }, update,{new:true})
+                        .then(userUpdated => {
+                            console.log(userUpdated)
+        
+                                return res.status(200).send({message:"Usuario cambiado"});
+                            
+                        })
+                        .catch(err => {
+                            console.log(err)
+                            return res.status(500).send({message:"Error actualitzant les dades"});
+                        })
                 }
             })
-            .catch(err => {
-                return res.status(500).send({message:"Error actualitzant les dades"});
+        
+        
+    },
+    updatePassword: function(req, res){
+        var nick = req.params.nick;
+        Usuario.find({nick: nick})
+            .then(user=>{                
+                if(decrypt(user[0].password)!=req.body.pasw){
+                    return res.status(404).send({message:"Error, password incorrecto"});
+                }else{
+
+                    var update = {password: encrypt(req.body.paswN)};  
+                    Usuario.findOneAndUpdate({ nick: nick }, update,{new:true})
+                        .then(userUpdated => {
+                            console.log(update)
+                                return res.status(200).send({message:"Password cambiado"});
+                            
+                        })
+                        .catch(err => {
+                            console.log(err)
+                            return res.status(500).send({message:"Error actualitzant les dades"});
+                        })
+                }
             })
+        
+        
     },
     getMoney: function(req, res){
         var nick = req.params.nick;
