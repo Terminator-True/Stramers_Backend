@@ -47,6 +47,11 @@ router.put("/new-money/:nick?",UserController.updateMoney)
 router.get("/get-cards/:nick?",UserController.getCards)
 //Update per al mall
 router.put("/updeck/:nick?",UserController.updateDeck)
+//Update User
+router.put("/update-user/:nick?",UserController.updateUser)
+//Update password
+router.put("/update-password/:nick?",UserController.updatePassword)
+
 //Get per a tots els malls
 router.get("/get-decks/:nick?",UserController.getDecks)
 //Update per les cartes
