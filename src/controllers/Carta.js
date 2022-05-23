@@ -88,7 +88,6 @@ function RouletteCards() {
                     RouletteCardsArray.push(cards);
                 })  
         }, 750);
-    
 }
 
 // Se llaman a las dos funciones para que al iniciar el servicio
@@ -118,7 +117,7 @@ var controller = {
 
     /**
      * @param Id Id de la carta 
-     * @returns la carta correspondiente segñun el id pasado por parámetro
+     * @returns la carta correspondiente segun el id pasado por parámetro
      */
     getCard: function(req, res){
         var Id = req.query.id;
@@ -131,13 +130,11 @@ var controller = {
                         if(!card) return res.status(404).send({message:"Carta no existent"});
 
                         return res.status(200).send({card});
-
                 })
                 .catch( err => {
                         return res.status(500).send({message:"Error al retornar les dades"});
                 });
         }
-
     }, 
     /**
      * @return Devuelve todas las cartas existientes en la base de datos
@@ -151,7 +148,6 @@ var controller = {
             .catch(err =>{
                 return res.status(500).send({message: "Error al retornar les dades"})
             })
-
     },
     /**
      * Recive una carta nueva, con todas sus características y
